@@ -13,6 +13,9 @@ if GetDepend('BSP_USING_SDRAM'):
 if GetDepend('RT_USING_SERIAL'):
     src = src + ['drv_usart.c'] 
 
+if GetDepend('BSP_USING_LED'):
+    src = src + ['drv_led.c']
+
 CPPPATH = [cwd]
 
 group = DefineGroup('Drivers', src, depend = [''], CPPPATH = CPPPATH)

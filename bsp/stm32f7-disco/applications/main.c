@@ -24,10 +24,20 @@
  */
 
 #include <rtthread.h>
+#include <rtdef.h>
+#include "board.h"
+#include "drv_led.h"
 
+extern void led_test_entry(void *arg);
 int main(void)
 {
     /* put user application code here */
+
+    rt_thread_t tid1 = rt_thread_create("led test", led_test_entry, (void *)1,
+                                        1024, RT_THREAD_PRIORITY_MAX / 4, 20);
+
+    rt_thread_startup(tid1);
+
     return 0;
 }
 
